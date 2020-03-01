@@ -1,0 +1,62 @@
+{
+    "_from": "cordova-plugin-simpluwp",
+    "_id": "cordova-plugin-simpleuwp@1.0.0",
+    "_inBundle": false,
+    "_integrity": "sha1-gyoz9tdj8LgCc733YbNbZ4xDuVc=",
+    "_location": "/cordova-plugin-simpleuwp",
+    "_phantomChildren": {},
+    "_requested": {
+      "type": "tag",
+      "registry": true,
+      "raw": "cordova-plugin-simpleuwp",
+      "name": "cordova-plugin-simpleuwp",
+      "escapedName": "cordova-plugin-simpleuwp",
+      "rawSpec": "",
+      "saveSpec": null,
+      "fetchSpec": "latest"
+    },
+    "_requiredBy": [
+      "#USER",
+      "/"
+    ],
+    "_resolved": "https://registry.npmjs.org/cordova-plugin-simpleuwp/-/cordova-plugin-simpleuwp-4.3.0.tgz",
+    "_shasum": "832a33f6d763f0b80273bdf761b35b678c43b957",
+    "_spec": "cordova-plugin-simpleuwp",
+    "_where": "K:\\Development\\Projects\\ScrumPoker\\Rep\\ScrumPokerApp",
+    "author": {
+      "name": "Marcus Wübbe",
+      "email": "marcus.wuebbe@gmail.com",
+      "url": "https://github.com/EddyVerbruggen"
+    },
+    "bugs": {
+      "url": "https://github.com/EddyVerbruggen/simpleuwp-PhoneGap-Plugin/issues"
+    },
+    "bundleDependencies": false,
+    "cordova": {
+      "id": "cordova-plugin-simpleuwp",
+      "platforms": [ 
+        "windows"
+      ]
+    },
+    "deprecated": false,
+    "description": "Prevent the screen of the mobile device from falling asleep.",
+    "engines": [
+      {
+        "name": "cordova",
+        "version": ">=3.0.0"
+      }
+    ],
+    "homepage": "https://github.com/Jerez69/cordova-plugin-simpleuwp",
+    "keywords": [
+      "ecosystem:cordova",
+      "cordova-windows"
+    ],
+    "license": "MIT",
+    "name": "cordova-plugin-simpleuwp",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Jerez69/cordova-plugin-simpleuwp.git"
+    },
+    "version": "1.0.0"
+  }
+  

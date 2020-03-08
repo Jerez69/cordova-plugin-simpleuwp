@@ -21,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/Jerez69/cordova-plugin-simpleuwp/issues"
   },
+  "types": "./types/index.d.ts",
   "homepage": "https://github.com/Jerez69/cordova-plugin-simpleuwp#readme"
 }

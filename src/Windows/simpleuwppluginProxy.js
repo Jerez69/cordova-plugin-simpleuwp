@@ -55,4 +55,4 @@ module.exports = {
     }
 };
 
-require("cordova/exec/proxy").add("SimpleUwp", module.exports);
+require("cordova/exec/proxy").add("SimpleUwpPlugin", module.exports);

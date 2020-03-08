@@ -4,7 +4,7 @@
 /**
  * This plugin just demonstrates the use of an uwp in a corodva project.
  */
-interface SimpleUwp {
+interface SimpleUwpPlugin {
     /**
     * init default strings.
     * @param success            Success callback
@@ -36,4 +36,4 @@ interface SimpleUwp {
 
 }
 
-declare var simpleuwp: SimpleUwp;
+declare var simpleuwp: SimpleUwpPlugin;

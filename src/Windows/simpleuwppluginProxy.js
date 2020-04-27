@@ -7,6 +7,7 @@ var handleAsyncError = function(handler,msg) {
 module.exports = {
     
     callFunction:function(success,error){
+        console.log("Now call really into uwp...");
         try {
             SimpleRC.UwpRCClass.callFunction();
             setTimeout(function(){
@@ -16,6 +17,7 @@ module.exports = {
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
         }
+        console.log("Now call really into uwp done");
     },
     callFunctionWithRetValues:function(success,error){
         try {

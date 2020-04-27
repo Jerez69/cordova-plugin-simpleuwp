@@ -1,9 +1,9 @@
 {
   "name": "cordova-plugin-simpleuwp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "simple plugin for calling winrt component",
   "cordova": {
-    "id": "simpleuwpplugin",
+    "id": "cordova-plugin-simpleuwp",
     "platforms": [
       "windows"
     ]

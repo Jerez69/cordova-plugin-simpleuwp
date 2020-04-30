@@ -36,4 +36,4 @@ interface SimpleUwpPlugin {
 
 }
 
-declare var simpleuwp: SimpleUwpPlugin;
+declare var simpleuwpplugin: SimpleUwpPlugin;

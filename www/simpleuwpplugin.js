@@ -1,4 +1,11 @@
+var exec = require('cordova/exec');
+
+/**
+ * Easy test plugin just for windows to call into uwp
+ * @constructor
+ */
 function SimpleUwpPlugin() {
+  console.log("SimpleUwpPlugin constructor");
 }
 
 SimpleUwpPlugin.prototype.callFunction = function (successCallback, errorCallback) {
@@ -17,13 +24,4 @@ SimpleUwpPlugin.prototype.stopCallback = function (successCallback, errorCallbac
   cordova.exec(successCallback, errorCallback, "SimpleUwpPlugin", "stopCallback", []);
 };
 
-SimpleUwpPlugin.install = function () {
-  if (!window.plugins) {
-    window.plugins = {};
-  }
-
-  window.plugins.simpleuwpplugin = new SimpleUwpPlugin();
-  return window.plugins.simpleuwpplugin;
-};
-
-cordova.addConstructor(SimpleUwpPlugin.install);
+module.exports = new SimpleUwpPlugin();

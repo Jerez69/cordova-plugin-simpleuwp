@@ -1,4 +1,4 @@
-// Type definitions for cordova-plugin-simpleuwp 1.0.5
+// Type definitions for cordova-plugin-simpleuwp 1.1.0
 // Project: https://github.com/apache/cordova-plugin-simpleuwp
 
 /**

@@ -9,7 +9,7 @@ module.exports = {
     callFunction:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleRC.UwpRCClass.callFunction();
+            SimpleUwp.UwpClass.callFunction();
             setTimeout(function(){
                 success();
             },0);
@@ -22,7 +22,7 @@ module.exports = {
     callFunctionWithReturnValues:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            var res = SimpleRC.UwpRCClass.callFunctionWithReturnValues();
+            var res = SimpleUwp.UwpClass.callFunctionWithReturnValues();
             setTimeout(function(){
                 success(res);
             },0);
@@ -35,7 +35,7 @@ module.exports = {
     startCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleRC.UwpRCClass.startCallback(function(str) {
+            SimpleUwp.UwpClass.startCallback(function(str) {
                 console.log('Received value: ' + str);     
                 setTimeout(function(){
                     success(str);
@@ -50,7 +50,7 @@ module.exports = {
     stopCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleRC.UwpRCClass.stopCallback();
+            SimpleUwp.UwpClass.stopCallback();
             setTimeout(function(){
                 success();
             },0);

@@ -35,12 +35,7 @@ module.exports = {
     startCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleUwp.UwpClass.startCallback(function(str) {
-                console.log('Received value: ' + str);     
-                setTimeout(function(){
-                    success(str);
-                },0);
-            });
+            SimpleUwp.UwpClass.startCallback(success);
         }
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);

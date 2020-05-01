@@ -19,9 +19,10 @@ module.exports = {
         }
         console.log("Now call really into uwp done");
     },
-    callFunctionWithRetValues:function(success,error){
+    callFunctionWithReturnValues:function(success,error){
+        console.log("Now call really into uwp...");
         try {
-            var res = SimpleRC.UwpRCClass.callFunctionWithRetValues();
+            var res = SimpleRC.UwpRCClass.callFunctionWithReturnValues();
             setTimeout(function(){
                 success(res);
             },0);
@@ -29,9 +30,10 @@ module.exports = {
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
         }
-        
+        console.log("Now call really into uwp done");
     },
     startCallback:function(success,error,jsCallback){
+        console.log("Now call really into uwp...");
         try {
             SimpleRC.UwpRCClass.startCallback(jsCallback);
             setTimeout(function(){
@@ -41,9 +43,10 @@ module.exports = {
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
         }
-        
+        console.log("Now call really into uwp done");
     },
     stopCallback:function(success,error){
+        console.log("Now call really into uwp...");
         try {
             SimpleRC.UwpRCClass.stopCallback();
             setTimeout(function(){
@@ -53,7 +56,7 @@ module.exports = {
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
         }
-        
+        console.log("Now call really into uwp done");
     }
 };
 

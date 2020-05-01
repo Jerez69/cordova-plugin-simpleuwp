@@ -13,7 +13,7 @@ SimpleUwpPlugin.prototype.callFunction = function (successCallback, errorCallbac
 };
 
 SimpleUwpPlugin.prototype.callFunctionWithRetValues = function (successCallback, errorCallback) {
-  cordova.exec(successCallback, errorCallback, "SimpleUwpPlugin", "callFunctionWithRetValues", []);
+  cordova.exec(successCallback, errorCallback, "SimpleUwpPlugin", "callFunctionWithReturnValues", []);
 };
 
 SimpleUwpPlugin.prototype.startCallback = function (successCallback, errorCallback, jsCallback) {

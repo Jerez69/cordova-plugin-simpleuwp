@@ -25,7 +25,7 @@ interface SimpleUwpPlugin {
     * @param error              Error callback
     * @param jsCallback         Timer callback
     */
-   startCallback: (success: () => any, error: (err: string) => any, jsCallback: (id: string) => any) => void;
+   startCallback: (success: (str: string) => any, error: (err: string) => any) => void;
 
    /**
     * stop timer.

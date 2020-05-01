@@ -32,13 +32,15 @@ module.exports = {
         }
         console.log("Now call really into uwp done");
     },
-    startCallback:function(success,error,jsCallback){
+    startCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleRC.UwpRCClass.startCallback(jsCallback);
-            setTimeout(function(){
-                success();
-            },0);
+            SimpleRC.UwpRCClass.startCallback(function(str) {
+                console.log('Received value: ' + str);     
+                setTimeout(function(){
+                    success(str);
+                },0);
+            });
         }
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);

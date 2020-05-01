@@ -1,4 +1,4 @@
-// Type definitions for cordova-plugin-simpleuwp 1.1.0
+// Type definitions for cordova-plugin-simpleuwp 1.1.2
 // Project: https://github.com/apache/cordova-plugin-simpleuwp
 
 /**
@@ -23,7 +23,6 @@ interface SimpleUwpPlugin {
     * start timer.
     * @param success            Success callback
     * @param error              Error callback
-    * @param jsCallback         Timer callback
     */
    startCallback: (success: (str: string) => any, error: (err: string) => any) => void;
 

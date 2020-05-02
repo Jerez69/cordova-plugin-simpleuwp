@@ -12,8 +12,8 @@ interface EventHandler{
     hasListeners: () => boolean;
 }
 
-interface ReceiveEvent extends CDVNetEvent {
-    addListener: (callback: (receiveInfo: string) => any) => void;
+interface ReceiveEvent extends EventHandler {
+    addListener: (callback: (ret: string) => any) => void;
 }
 
 interface SimpleUwpPlugin {

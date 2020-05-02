@@ -4,7 +4,9 @@ var handleAsyncError = function(handler,msg) {
     },0);
 };
 
-var receiveCallback = undefined;
+var receiveCallback = function(ret){
+    console.log("Returned: " + ret);
+};
 
 module.exports = {
     
@@ -37,7 +39,6 @@ module.exports = {
     startCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            receiveCallback("Callback test");
             SimpleUwp.UwpClass.startCallback(receiveCallback);
             setTimeout(function(){
                 success();

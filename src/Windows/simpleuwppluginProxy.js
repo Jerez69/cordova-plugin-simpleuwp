@@ -60,10 +60,10 @@ module.exports = {
         }
         console.log("Now call really into uwp done");
     },
-    regsisterReceive:function(success,error){
+    registerReceive:function(success,error){
         console.log("registerReceive...");
         receiveCallback = sucess;
-        console.log("regsisterReceive done");
+        console.log("registerReceive done");
     }
 };
 

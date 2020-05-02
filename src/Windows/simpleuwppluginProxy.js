@@ -37,6 +37,7 @@ module.exports = {
     startCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
+            receiveCallback("Callback test");
             SimpleUwp.UwpClass.startCallback(receiveCallback);
             setTimeout(function(){
                 success();

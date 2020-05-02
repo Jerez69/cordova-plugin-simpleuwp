@@ -7,7 +7,7 @@ var EventHandler = require('cordova-plugin-simpleuwp.EventHandler');
  */
 function SimpleUwpPlugin() {
   exec(function (ret) {
-		exports.onReceive.fire(ret);
+		console.log('SimpleUwpPlugin: received: ' + ret);
 	}, null, 'SimpleUwpPlugin', 'registerReceive', []);
 }
 
@@ -29,7 +29,7 @@ SimpleUwpPlugin.prototype.stopCallback = function (successCallback, errorCallbac
 };
 
 // Event
-exports.onReceive = Object.create(EventHandler);
-exports.onReceive.init();
+//exports.onReceive = Object.create(EventHandler);
+//exports.onReceive.init();
 
 module.exports = new SimpleUwpPlugin();

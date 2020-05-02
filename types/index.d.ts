@@ -4,6 +4,18 @@
 /**
  * This plugin just demonstrates the use of an uwp in a corodva project.
  */
+
+interface EventHandler{
+    addListener: (callback:() => any) => void;
+    removeListener: (callback:() => any) => void;
+    hasListener: (callback:() => any) => boolean;
+    hasListeners: () => boolean;
+}
+
+interface ReceiveEvent extends CDVNetEvent {
+    addListener: (callback: (receiveInfo: string) => any) => void;
+}
+
 interface SimpleUwpPlugin {
     /**
     * init default strings.
@@ -32,6 +44,11 @@ interface SimpleUwpPlugin {
     * @param error              Error callback
     */
    stopCallback: (success: () => any, error: (err: string) => any) => void;
+
+   /**
+    * Event for received data.
+    */
+   onReceive: ReceiveEvent;
 
 }
 

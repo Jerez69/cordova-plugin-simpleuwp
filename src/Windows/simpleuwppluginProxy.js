@@ -4,6 +4,8 @@ var handleAsyncError = function(handler,msg) {
     },0);
 };
 
+var receiveCallback = undefined;
+
 module.exports = {
     
     callFunction:function(success,error){
@@ -35,7 +37,10 @@ module.exports = {
     startCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleUwp.UwpClass.startCallback(success);
+            SimpleUwp.UwpClass.startCallback(receiveCallback);
+            setTimeout(function(){
+                success();
+            },0);
         }
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
@@ -54,6 +59,11 @@ module.exports = {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
         }
         console.log("Now call really into uwp done");
+    },
+    regsisterReceive:function(success,error){
+        console.log("registerReceive...");
+        receiveCallback = sucess;
+        console.log("regsisterReceive done");
     }
 };
 

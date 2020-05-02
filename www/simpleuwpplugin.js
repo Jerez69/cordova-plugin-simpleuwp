@@ -27,14 +27,14 @@ SimpleUwpPlugin.prototype.stopCallback = function (successCallback, errorCallbac
 };
 
 // Event
-SimpleUwpPlugin.prototype.onReceive = Object.create(EventHandler);
-SimpleUwpPlugin.prototype.onReceive.init();
+exports.onReceive = Object.create(EventHandler);
+exports.onReceive.init();
 
 // Init functionality
 channel.onCordovaReady.subscribe(function() {
 	
 	exec(function (ret) {
-		SimpleUwpPlugin.onReceive.fire(ret);
+		exports.onReceive.fire(ret);
 	}, null, 'SimpleUwpPlugin', 'registerReceive', []);
 
 });

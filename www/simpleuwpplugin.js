@@ -1,14 +1,12 @@
 var exec = require('cordova/exec');
-var EventHandler = require('cordova-plugin-simpleuwp.EventHandler');
+var channel = require('cordova/channel');
+//var EventHandler = require('cordova-plugin-simpleuwp.EventHandler');
 
 /**
  * Easy test plugin just for windows to call into uwp
  * @constructor
  */
 function SimpleUwpPlugin() {
-  exec(function (ret) {
-		console.log('SimpleUwpPlugin: received: ' + ret);
-	}, null, 'SimpleUwpPlugin', 'registerReceive', []);
 }
 
 // Methods
@@ -31,5 +29,14 @@ SimpleUwpPlugin.prototype.stopCallback = function (successCallback, errorCallbac
 // Event
 //exports.onReceive = Object.create(EventHandler);
 //exports.onReceive.init();
+
+// Init functionality
+channel.onCordovaReady.subscribe(function() {
+	
+	exec(function (ret) {
+		console.log('Received: ' + ret);
+	}, null, 'SimpleUwpPlugin', 'registerReceive', []);
+
+});
 
 module.exports = new SimpleUwpPlugin();

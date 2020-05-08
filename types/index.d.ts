@@ -29,7 +29,7 @@ interface SimpleUwpPlugin {
     * @param success            Success callback
     * @param error              Error callback
     */
-   callFunctionWithReturnValues: (success: (res: string) => any, error: (err: string) => any) => void;
+   callFunctionWithReturnValues: (success: (res: string[]) => any, error: (err: string) => any) => void;
 
    /**
     * start timer.

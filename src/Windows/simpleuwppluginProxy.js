@@ -8,6 +8,8 @@ var receiveCallback = function(ret){
     console.log("Returned: " + ret);
 };
 
+var nativeObject = undefined;
+
 module.exports = {
     
     callFunction:function(success,error){
@@ -40,8 +42,14 @@ module.exports = {
         console.log("Now call really into uwp...");
         try {
             receiveCallback("Callback test");
-            SimpleUwp.UwpClass.CallEvent = receiveCallback;
-            SimpleUwp.UwpClass.startCallback();
+            if(nativeObject == undefined) {
+                console.log("Create component class...");
+                nativeObject = new SimpleUwpComp.UwpClass();
+                console.log("Create component class done");
+            }
+           
+            nativeObject.CallbackEvent = receiveCallback;
+            nativeObject.startCallback();
             setTimeout(function(){
                 success();
             },0);

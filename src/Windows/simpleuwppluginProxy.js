@@ -15,7 +15,12 @@ module.exports = {
     callFunction:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleUwp.UwpClass.callFunction();
+            if(nativeObject == undefined) {
+                console.log("Create component class...");
+                nativeObject = new SimpleUwpComp.UwpClass();
+                console.log("Create component class done");
+            }
+            nativeObject.callFunction();
             setTimeout(function(){
                 success();
             },0);
@@ -28,7 +33,12 @@ module.exports = {
     callFunctionWithReturnValues:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            var res = SimpleUwp.UwpClass.callFunctionWithReturnValues();
+            if(nativeObject == undefined) {
+                console.log("Create component class...");
+                nativeObject = new SimpleUwpComp.UwpClass();
+                console.log("Create component class done");
+            }
+            var res = nativeObject.callFunctionWithReturnValues();
             setTimeout(function(){
                 success(res);
             },0);
@@ -62,7 +72,12 @@ module.exports = {
     stopCallback:function(success,error){
         console.log("Now call really into uwp...");
         try {
-            SimpleUwp.UwpClass.stopCallback();
+            if(nativeObject == undefined) {
+                console.log("Create component class...");
+                nativeObject = new SimpleUwpComp.UwpClass();
+                console.log("Create component class done");
+            }
+            nativeObject.stopCallback();
             setTimeout(function(){
                 success();
             },0);

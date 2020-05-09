@@ -4,8 +4,8 @@ var handleAsyncError = function(handler,msg) {
     },0);
 };
 
-var receiveCallback = function(ret){
-    console.log("Returned: " + ret);
+var receiveCallback = function (ev) {
+    console.log("receiveCallback: " + ev.target);
 };
 
 var nativeObject = undefined;
@@ -131,11 +131,7 @@ module.exports = {
             nativeObject.propertyA = num;
             console.log("changeProperty2.getAProperty: " + nativeObject.propertyA);
 
-            var singlecast  = function (ev) {
-                console.log("changeProperty2.singlecast: " + ev.target);
-            };
-
-            nativeObject.addEventListener("someevent", singlecast);
+            nativeObject.addEventListener("someevent", receiveCallback);
 
             nativeObject.fireEvent("The answer is ");
 

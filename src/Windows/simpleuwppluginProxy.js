@@ -4,8 +4,12 @@ var handleAsyncError = function(handler,msg) {
     },0);
 };
 
-var receiveCallback = function (ev) {
-    console.log("receiveCallback: " + ev.target);
+var onPropertyChanged = function (ev) {
+    console.log("onPropertyChanged: " + ev.target);
+};
+
+var receiveCallback = function (ret) {
+    console.log("receiveCallback: " + ret);
 };
 
 var nativeObject = undefined;
@@ -131,7 +135,7 @@ module.exports = {
             nativeObject.propertyA = num;
             console.log("changeProperty2.getAProperty: " + nativeObject.propertyA);
 
-            nativeObject.addEventListener("someevent", receiveCallback);
+            nativeObject.addEventListener("someevent", onPropertyChanged);
 
             nativeObject.fireEvent("The answer is ");
 

@@ -91,6 +91,62 @@ module.exports = {
         console.log("registerReceive...");
         receiveCallback = sucess;
         console.log("registerReceive done");
+    },
+    changeProperty1:function(success,error,num){
+        console.log("Now call really into uwp...");
+        try {
+            if(nativeObject == undefined) {
+                console.log("Create component class...");
+                nativeObject = new SimpleUwpComp.UwpClass();
+                console.log("Create component class done");
+            }
+            var propValue = nativeObject.propertyA;
+            console.log("getAProperty: " + propValue);
+
+            var singlecasthandler = function (ev) {
+                console.log("getAProperty.singlecasthandler: " + ev);
+            };
+
+            nativeObject.onpropertychangedevent = singlecasthandler;
+
+            nativeObject.propertyA = 2 * num;
+
+            setTimeout(function(){
+                success();
+            },0);
+        }
+        catch(err) {
+            handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
+        }
+        console.log("Now call really into uwp done");
+    },
+    changeProperty2:function(success,error,num){
+        console.log("Now call really into uwp...");
+        try {
+            if(nativeObject == undefined) {
+                console.log("changeProperty2.Create component class...");
+                nativeObject = new SimpleUwpComp.UwpClass();
+                console.log("changeProperty2.Create component class done");
+            }
+            nativeObject.propertyA = num;
+            console.log("changeProperty2.getAProperty: " + nativeObject.propertyA);
+
+            var singlecast  = function (ev) {
+                console.log("changeProperty2.singlecast: " + ev.target);
+            };
+
+            nativeObject.addEventListener("someevent", singlecast);
+
+            nativeObject.fireEvent("The answer is ");
+
+            setTimeout(function(){
+                success();
+            },0);
+        }
+        catch(err) {
+            handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
+        }
+        console.log("Now call really into uwp done");
     }
 };
 

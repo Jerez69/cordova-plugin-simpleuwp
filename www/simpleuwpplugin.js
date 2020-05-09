@@ -26,6 +26,14 @@ SimpleUwpPlugin.prototype.stopCallback = function (successCallback, errorCallbac
   exec(successCallback, errorCallback, "SimpleUwpPlugin", "stopCallback", []);
 };
 
+SimpleUwpPlugin.prototype.changeProperty1 = function (successCallback, errorCallback, num) {
+  exec(successCallback, errorCallback, "SimpleUwpPlugin", "changeProperty1", [num]);
+};
+
+SimpleUwpPlugin.prototype.changeProperty2 = function (successCallback, errorCallback, num) {
+  exec(successCallback, errorCallback, "SimpleUwpPlugin", "changeProperty2", [num]);
+};
+
 // Event
 //exports.onReceive = Object.create(EventHandler);
 //exports.onReceive.init();

@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-simpleuwp",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "simple plugin for interacting with uwp component",
   "cordova": {
     "id": "cordova-plugin-simpleuwp",

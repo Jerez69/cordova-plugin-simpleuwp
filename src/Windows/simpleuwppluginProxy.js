@@ -63,10 +63,14 @@ module.exports = {
             }
            
             nativeObject.CallbackEvent = receiveCallback;
-            nativeObject.startCallback();
-            setTimeout(function(){
-                success();
-            },0);
+            var ret = nativeObject.startCallback();
+            if(ret != 0) {
+                handleAsyncError(error,"SimpleUwp failed to exec request : No synchronization context available");
+            } else {
+                setTimeout(function(){
+                    success();
+                },0);
+            }
         }
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);

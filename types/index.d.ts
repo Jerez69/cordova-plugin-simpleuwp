@@ -53,14 +53,6 @@ interface SimpleUwpPlugin {
     */
    changeProperty1: (success: () => any, error: (err: string) => any, num: number) => void;
 
-    /**
-    * chaange property with event.
-    * @param success            Success callback
-    * @param error              Error callback
-    * @param num                argument
-    */
-   changeProperty2: (success: () => any, error: (err: string) => any, num: number) => void;
-
 
    /**
     * Event for received data.

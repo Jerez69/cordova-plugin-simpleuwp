@@ -4,15 +4,12 @@ var handleAsyncError = function(handler,msg) {
     },0);
 };
 
-var onPropertyChanged = function (ev) {
-    console.log("onPropertyChanged: " + ev.target);
-};
-
 var receiveCallback = function (ret) {
     console.log("receiveCallback: " + ret);
 };
 
 var nativeObject = undefined;
+var stopped = undefined;
 
 module.exports = {
     
@@ -21,7 +18,7 @@ module.exports = {
         try {
             if(nativeObject == undefined) {
                 console.log("Create component class...");
-                nativeObject = new SimpleUwpComp.UwpClass();
+                nativeObject = new UwpCompCB.UwpCBClass();
                 console.log("Create component class done");
             }
             nativeObject.callFunction();
@@ -39,7 +36,7 @@ module.exports = {
         try {
             if(nativeObject == undefined) {
                 console.log("Create component class...");
-                nativeObject = new SimpleUwpComp.UwpClass();
+                nativeObject = new UwpCompCB.UwpCBClass();
                 console.log("Create component class done");
             }
             var res = nativeObject.callFunctionWithReturnValues();
@@ -54,16 +51,35 @@ module.exports = {
     },
     startCallback:function(success,error){
         console.log("Now call really into uwp...");
+
+        // endless loop for raecting to change events
+        function getNumberChangeEvent (cbObject) {
+            return cbObject.getNumberChangeEvent().done(
+                function (result) {
+                    if (stopped == true) {
+                        return;
+                    }
+
+                    receiveCallback(result);
+
+                    setTimeout(function () {
+                        getNumberChangeEvent(cbObject);
+                    }, 0);
+                }
+            );
+        }
+
         try {
             receiveCallback("Callback test");
             if(nativeObject == undefined) {
-                console.log("Create component class...");
-                nativeObject = new SimpleUwpComp.UwpClass();
-                console.log("Create component class done");
+                console.log("Create uwp cb class...");
+                nativeObject = new UwpCompCB.UwpCBClass();
+                console.log("Create uwp cb class done");
             }
            
-            nativeObject.CallbackEvent = receiveCallback;
             var ret = nativeObject.startCallback();
+            stopped = false;
+
             if(ret != 0) {
                 handleAsyncError(error,"SimpleUwp failed to exec request : No synchronization context available");
             } else {
@@ -71,6 +87,8 @@ module.exports = {
                     success();
                 },0);
             }
+
+            getNumberChangeEvent();
         }
         catch(err) {
             handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
@@ -82,10 +100,11 @@ module.exports = {
         try {
             if(nativeObject == undefined) {
                 console.log("Create component class...");
-                nativeObject = new SimpleUwpComp.UwpClass();
+                nativeObject = new UwpCompCB.UwpCBClass();
                 console.log("Create component class done");
             }
             nativeObject.stopCallback();
+            stopped = true;
             setTimeout(function(){
                 success();
             },0);
@@ -100,48 +119,24 @@ module.exports = {
         receiveCallback = sucess;
         console.log("registerReceive done");
     },
-    changeProperty1:function(success,error,num){
+    changeProperty:function(success,error,num){
         console.log("Now call really into uwp...");
         try {
             if(nativeObject == undefined) {
                 console.log("Create component class...");
-                nativeObject = new SimpleUwpComp.UwpClass();
+                nativeObject = new UwpCompCB.UwpCBClass();
                 console.log("Create component class done");
             }
             var propValue = nativeObject.propertyA;
-            console.log("getAProperty: " + propValue);
+            console.log("getProperty: " + propValue);
 
-            var singlecasthandler = function (ev) {
-                console.log("getAProperty.singlecasthandler: " + ev);
+            var propertyChangedHandler = function (ev) {
+                console.log("getProperty.propertyChangedHandler: " + ev);
             };
 
-            nativeObject.onpropertychangedevent = singlecasthandler;
+            nativeObject.onpropertychangedevent = propertyChangedHandler;
 
             nativeObject.propertyA = 2 * num;
-
-            setTimeout(function(){
-                success();
-            },0);
-        }
-        catch(err) {
-            handleAsyncError(error,"SimpleUwp failed to exec request : " + err.message);
-        }
-        console.log("Now call really into uwp done");
-    },
-    changeProperty2:function(success,error,num){
-        console.log("Now call really into uwp...");
-        try {
-            if(nativeObject == undefined) {
-                console.log("changeProperty2.Create component class...");
-                nativeObject = new SimpleUwpComp.UwpClass();
-                console.log("changeProperty2.Create component class done");
-            }
-            nativeObject.propertyA = num;
-            console.log("changeProperty2.getAProperty: " + nativeObject.propertyA);
-
-            nativeObject.addEventListener("someevent", onPropertyChanged);
-
-            nativeObject.fireEvent("The answer is ");
 
             setTimeout(function(){
                 success();

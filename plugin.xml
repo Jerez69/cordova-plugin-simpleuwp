@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-plugin-simpleuwp"
-    version="1.4.7">
+    version="1.5.0">
 
     <js-module src="www/simpleuwpplugin.js" name="simpleuwpplugin">
         <clobbers target="window.simpleuwpplugin" />
@@ -12,7 +12,7 @@
         <js-module src="src/windows/simpleuwppluginProxy.js" name="SimpleUwpProxy">
             <merges target="" />
         </js-module>
-        <framework src="src/windows/SimpleUwpComp.winmd" custom="true"/>
+        <framework src="src/windows/UwpCompCB.winmd" custom="true"/>
     </platform>
 
 </plugin>
